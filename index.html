@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17251f">
+  <meta name="description" content="ThinkEthic: uma experiência interativa de reflexão sobre decisões éticas.">
+  <title>ThinkEthic | Ética em perspectiva</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="ThinkEthic, início" id="brand-home">
+      <span class="brand-mark">T<span>·</span>E</span>
+      <span class="brand-name">Think<span>Ethic</span></span>
+    </a>
+    <span class="topbar-note"><span class="status-dot"></span> Reflexão ética interativa</span>
+  </header>
+
+  <main class="app-shell">
+    <section class="screen welcome-screen active" id="welcome-screen" aria-labelledby="welcome-title">
+      <div class="welcome-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> PENSE. PONDERE. DECIDA.</p>
+        <h1 id="welcome-title">Toda decisão<br>conta uma <em>história.</em></h1>
+        <p class="lead">O ThinkEthic propõe situações do cotidiano profissional para explorar como você pondera consequências, imparcialidade, prudência e revisão de ideias.</p>
+        <div class="welcome-meta">
+          <div class="meta-item"><span class="meta-icon">◷</span><span><strong>5 a 8 minutos</strong><small>para concluir</small></span></div>
+          <div class="meta-item"><span class="meta-icon">◎</span><span><strong>12 dilemas</strong><small>uma pergunta por vez</small></span></div>
+        </div>
+        <button class="button button-primary" id="start-button">Começar reflexão <span aria-hidden="true">↗</span></button>
+        <p class="privacy-note"><span aria-hidden="true">⌁</span> Suas respostas ficam nesta página. Não há cadastro nem envio de dados.</p>
+      </div>
+      <aside class="welcome-art" aria-label="Ilustração abstrata sobre reflexão e escolhas">
+        <div class="orbit orbit-large"></div>
+        <div class="orbit orbit-small"></div>
+        <div class="art-core">
+          <span class="core-symbol">T<span>·</span>E</span>
+          <span class="core-caption">ética em<br>perspectiva</span>
+        </div>
+        <div class="floating-note note-top"><span class="note-index">01</span><span>Considere<br>as consequências</span></div>
+        <div class="floating-note note-bottom"><span class="note-index">02</span><span>Questione<br>seus critérios</span></div>
+        <div class="art-spark spark-one">✳</div><div class="art-spark spark-two">✳</div>
+      </aside>
+    </section>
+
+    <section class="screen quiz-screen" id="quiz-screen" aria-labelledby="question-title" aria-live="polite">
+      <div class="quiz-topline">
+        <button class="text-button" id="exit-quiz" type="button">← Início</button>
+        <span class="question-counter" id="question-counter">PERGUNTA 01 DE 12</span>
+      </div>
+      <div class="progress-track" role="progressbar" aria-label="Progresso do questionário" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0" id="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <div class="question-layout">
+        <div class="question-main">
+          <p class="eyebrow" id="dimension-label">DIMENSÃO EM ANÁLISE</p>
+          <h2 id="question-title">Pergunta aparece aqui</h2>
+          <p class="question-context" id="question-context"></p>
+          <div class="options-list" id="options-list"></div>
+          <div class="answer-feedback" id="answer-feedback" hidden aria-live="polite">
+            <span class="feedback-mark">↳</span>
+            <div><strong>Para refletir</strong><p id="feedback-text"></p></div>
+          </div>
+          <div class="quiz-actions">
+            <button class="button button-quiet" id="previous-button" type="button">← Anterior</button>
+            <button class="button button-primary" id="next-button" type="button" disabled>Confirmar escolha <span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+        <aside class="question-aside">
+          <div class="aside-number" id="aside-number">01<span>/12</span></div>
+          <p class="aside-heading">Uma escolha de cada vez.</p>
+          <p class="aside-copy">Não existe uma resposta que defina toda a sua ética. Observe o contexto, as pessoas envolvidas e as consequências possíveis.</p>
+          <div class="aside-rule"></div>
+          <p class="remaining-label">PARA O FINAL</p>
+          <p class="remaining-count" id="remaining-count">12 perguntas restantes</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="screen result-screen" id="result-screen" aria-labelledby="result-title">
+      <div class="result-heading">
+        <p class="eyebrow"><span class="eyebrow-line"></span> SUA REFLEXÃO EM PERSPECTIVA</p>
+        <h2 id="result-title">O que suas escolhas revelam <em>neste recorte?</em></h2>
+        <p class="result-intro">Este panorama resume suas respostas aos dilemas apresentados. É um ponto de partida para reflexão, não um veredito sobre quem você é.</p>
+      </div>
+
+      <div class="results-grid">
+        <article class="result-card score-card">
+          <p class="card-kicker">ÍNDICE DE COERÊNCIA NAS RESPOSTAS</p>
+          <div class="score-ring" id="score-ring" role="img" aria-label="Índice geral de coerência nas respostas">
+            <div class="score-ring-inner">
+              <strong id="overall-score">0<span>%</span></strong>
+              <small>índice geral</small>
+            </div>
+          </div>
+          <h3 id="result-summary">Um convite à reflexão</h3>
+          <p id="result-description">A leitura do resultado aparecerá aqui.</p>
+          <div class="score-footnote">Pontuação experimental baseada nos critérios deste protótipo. Não é uma avaliação psicológica validada.</div>
+        </article>
+
+        <article class="result-card chart-card">
+          <div class="chart-header">
+            <div><p class="card-kicker">VISÃO POR DIMENSÃO</p><h3>Seus critérios em foco</h3></div>
+            <span class="chart-tag">0–100%</span>
+          </div>
+          <p class="chart-description">Cada barra representa a pontuação relativa às escolhas feitas nas situações daquela dimensão.</p>
+          <div class="chart" id="dimension-chart" role="img" aria-label="Gráfico de barras com os resultados por dimensão"></div>
+          <div class="chart-axis"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>
+          <p class="chart-note">As dimensões não são notas de caráter. Elas indicam como suas respostas se alinharam aos critérios definidos para esta atividade.</p>
+        </article>
+      </div>
+
+      <article class="reflection-card">
+        <div class="reflection-icon">✳</div>
+        <div><p class="card-kicker">PRÓXIMO PASSO</p><h3>É possível pensar melhor sem pensar igual.</h3><p id="reflection-text">Use o resultado como oportunidade para revisar argumentos, reconhecer conflitos de valores e considerar outras perspectivas.</p></div>
+      </article>
+
+      <div class="result-actions">
+        <button class="button button-primary" id="restart-button" type="button">Refazer reflexão <span aria-hidden="true">↻</span></button>
+        <button class="button button-quiet" id="review-button" type="button">Rever minhas respostas</button>
+      </div>
+      <p class="final-disclaimer">O ThinkEthic não deve ser usado isoladamente para contratar, promover, excluir ou penalizar pessoas.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>ThinkEthic <span class="footer-dot">·</span> Ética em perspectiva</span>
+    <span>Um instrumento de reflexão, não de julgamento.</span>
+  </footer>
+</body>
+</html>
