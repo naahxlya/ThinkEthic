@@ -33,7 +33,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid #8c80c8; outline-offs
 .brand-name span { color: var(--green); }
 .topbar-note { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 12px; letter-spacing: .02em; }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #76a982; box-shadow: 0 0 0 4px #e5f0e5; }
-.app-shell { max-width: 1120px; min-height: calc(100vh - 145px); margin: 0 auto; padding: 26px 30px 52px; }
+.app-shell { max-width: 1120px; min-height: calc(100vh - 145px); margin: 0 auto; padding: 2px 30px 52px; }
 .screen { display: none; animation: enter .35s ease both; }
 .screen.active { display: block; }
 @keyframes enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }

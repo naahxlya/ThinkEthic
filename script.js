@@ -5,8 +5,6 @@ const dimensions = {
   revision: { label: "Revisão de ideias", short: "Revisão de ideias", description: "Reconsiderar uma posição quando surgem fatos ou argumentos relevantes." }
 };
 
-// Cada alternativa recebe uma pontuação experimental de 0 a 3 para a dimensão do dilema.
-// A pontuação representa alinhamento com os critérios deste protótipo, não o valor moral de alguém.
 const questions = [
   {
     dimension: "consequences",
@@ -141,6 +139,36 @@ const questions = [
     ]
   }
 ];
+
+
+function randomInt(maxExclusive) {
+  if (maxExclusive <= 1) return 0;
+
+  if (globalThis.crypto && typeof globalThis.crypto.getRandomValues === "function") {
+    const range = 0x100000000;
+    const limit = Math.floor(range / maxExclusive) * maxExclusive;
+    const buffer = new Uint32Array(1);
+    let value;
+    do {
+      globalThis.crypto.getRandomValues(buffer);
+      value = buffer[0];
+    } while (value >= limit);
+    return value % maxExclusive;
+  }
+
+  return Math.floor(Math.random() * maxExclusive);
+}
+
+function shuffleArray(array) {
+  for (let index = array.length - 1; index > 0; index--) {
+    const randomIndex = randomInt(index + 1);
+    [array[index], array[randomIndex]] = [array[randomIndex], array[index]];
+  }
+  return array;
+}
+
+shuffleArray(questions);
+questions.forEach(question => shuffleArray(question.options));
 
 const state = {
   current: 0,
